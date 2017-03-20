@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-xs-9">
+      <app-spinner [hidden]="!spinner.visible"></app-spinner>
+      <div [hidden]="spinner.visible">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
