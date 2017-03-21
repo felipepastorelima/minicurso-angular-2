@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { UserService } from './user.service';
 import { UserListComponent } from './user-list/user-list.component';
 import { NgModule } from '@angular/core';
+import { HighlightDirective } from "app/user/highlight.directive";
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { NgModule } from '@angular/core';
   declarations: [
     UserListComponent,
     UserFormComponent,
+    HighlightDirective,
   ],
   providers: [
     UserService,
