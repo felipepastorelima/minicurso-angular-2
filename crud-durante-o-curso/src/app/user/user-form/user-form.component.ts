@@ -1,3 +1,4 @@
+import { User } from '../user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
 
+  user: User;
   form: FormGroup;
 
   constructor(
@@ -14,19 +16,20 @@ export class UserFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.user = new User();
+
     this.form = this.formBuilder.group({
-      'name': ['', Validators.required],
-      'lastName': [''],
+      'name': [this.user.name, Validators.required],
     });
   }
 
   save() {
-    debugger;
-
     if (!this.form.valid) {
       return;
     }
 
-    console.log(this.form.value);
+    this.user.name = this.form.value.name;
+
+    // Envia user para o servidor
   }
 }
