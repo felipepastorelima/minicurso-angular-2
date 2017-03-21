@@ -45,7 +45,19 @@ export class UserService {
           }).catch(error => reject(error));
       }, 1000);
     });
+  }
 
+  update(user: User): Promise<Array<User>> {
+    return this.http
+          .put(
+            `${environment.apiUrl}/users/${user.id}`,
+            user,
+            { headers: this.headers }
+          )
+          .toPromise()
+          .then(response => {
+            return User.fromJSON(response.json());
+          });
   }
 
 }

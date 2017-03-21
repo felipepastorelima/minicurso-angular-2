@@ -39,12 +39,23 @@ export class UserFormComponent implements OnInit {
     this.user.name = this.form.value.name;
 
     this.loading = true;
-    this.userService.create(this.user).then(() => {
-      this.router.navigate(['/user']);
-      this.loading = false;
-    }).catch((error) => {
-      console.error(error);
-      this.loading = false;
-    });
+
+    if (!this.user.id) {
+      this.userService.create(this.user).then(() => {
+        this.router.navigate(['/user']);
+        this.loading = false;
+      }).catch((error) => {
+        console.error(error);
+        this.loading = false;
+      });
+    }else {
+      this.userService.update(this.user).then(() => {
+        this.router.navigate(['/user']);
+        this.loading = false;
+      }).catch((error) => {
+        console.error(error);
+        this.loading = false;
+      });
+    }
   }
 }
