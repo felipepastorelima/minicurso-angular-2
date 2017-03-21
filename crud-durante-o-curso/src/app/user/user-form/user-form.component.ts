@@ -15,7 +15,16 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      'name': ['', Validators.required]
+      'name': ['', Validators.required],
+      'lastName': [''],
     });
+  }
+
+  save() {
+    if (!this.form.valid) {
+      return;
+    }
+
+    console.log(this.form.value);
   }
 }

@@ -1,14 +1,26 @@
 Formulário
 <br>
 
-<form [formGroup]="form">
+<form
+  [formGroup]="form"
+  (ngSubmit)="save()"
+>
 
+  <label>Nome</label>
   <input
     type="text"
     class="form-control"
     formControlName="name"
   />
 
-</form>
+  <label>Sobrenome</label>
+  <input
+    type="text"
+    class="form-control"
+    formControlName="lastName"
+  />
 
-{{ form.get('name').value }}
+  <button type="submit" class="btn btn-success">
+    Salvar
+  </button>
+</form>
