@@ -12,6 +12,11 @@ Formulário
     class="form-control"
     formControlName="name"
   />
+  <div class="text-danger" *ngIf="form.get('name').errors && form.get('name').errors.required">
+    Este campo é obrigatório
+  </div>
+
+  <br>
 
   <label>Sobrenome</label>
   <input
