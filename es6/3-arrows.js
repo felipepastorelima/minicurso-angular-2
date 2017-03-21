@@ -3,6 +3,7 @@ function run(fnc) {
   fnc(1, 2);
 }
 
+
 run((a, b) => {
   console.log('A: ', a);
   console.log('B: ', b);

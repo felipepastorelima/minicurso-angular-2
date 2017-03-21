@@ -19,6 +19,7 @@ function two() {
 function three() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
+      reject('Erro blab la');
       console.log('three');
       resolve();
     }, 1500);
@@ -27,7 +28,7 @@ function three() {
 
 console.log('Sequencial');
 one().then(() => {
-  two().then(() => {
-    three();
+  return two().then(() => {
+    return three();
   });
 });

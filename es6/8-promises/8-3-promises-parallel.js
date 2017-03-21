@@ -10,8 +10,9 @@ function one() {
 function two() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
+      reject('faskldjfkls');
       console.log('two');
-      resolve()
+      resolve();
     }, 500);
   });
 }
@@ -31,5 +32,7 @@ let allPromises = Promise.all([
   two(),
   three()
 ]);
-allPromises.then(() => {});
+allPromises.then(() => {
+  console.log("Finalizou todas");
+});
 
