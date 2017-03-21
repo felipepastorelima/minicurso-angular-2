@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
 
+  loading = false;
   user: User;
   form: FormGroup;
 
@@ -34,8 +35,13 @@ export class UserFormComponent implements OnInit {
 
     this.user.name = this.form.value.name;
 
+    this.loading = true;
     this.userService.create(this.user).then(() => {
       this.router.navigate(['/user']);
-    }).catch((error) => console.error(error));
+      this.loading = false;
+    }).catch((error) => {
+      console.error(error);
+      this.loading = false;
+    });
   }
 }

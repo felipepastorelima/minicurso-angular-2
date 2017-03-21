@@ -22,16 +22,21 @@ export class UserService {
   }
 
   create(user: User): Promise<Array<User>> {
-    return this.http
-      .post(
-        `${environment.apiUrl}/users`,
-        user,
-        { headers: this.headers }
-      )
-      .toPromise()
-      .then(response => {
-        return User.fromJSON(response.json());
-      });
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.http
+          .post(
+            `${environment.apiUrl}/users`,
+            user,
+            { headers: this.headers }
+          )
+          .toPromise()
+          .then(response => {
+            resolve(User.fromJSON(response.json()));
+          }).catch(error => reject(error));
+      }, 1000);
+    });
+
   }
 
 }

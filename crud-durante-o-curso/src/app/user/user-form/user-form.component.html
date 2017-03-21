@@ -21,7 +21,11 @@ Formulário
 
   <br>
 
-  <button type="submit" class="btn btn-success">
+  <button
+    type="submit"
+    class="btn btn-success"
+    [disabled]="loading"
+  >
     Salvar
   </button>
 </form>
