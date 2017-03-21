@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserRoutingModule } from './user-routing.module';
 import { CommonModule } from '@angular/common';
@@ -10,6 +11,8 @@ import { NgModule } from '@angular/core';
   imports: [
     HttpModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     UserRoutingModule,
   ],
   exports: [],
