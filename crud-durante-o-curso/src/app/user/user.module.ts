@@ -1,3 +1,4 @@
+import { UserFormComponent } from './user-form/user-form.component';
 import { UserRoutingModule } from './user-routing.module';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -11,11 +12,10 @@ import { NgModule } from '@angular/core';
     CommonModule,
     UserRoutingModule,
   ],
-  exports: [
-    UserListComponent,
-  ],
+  exports: [],
   declarations: [
     UserListComponent,
+    UserFormComponent,
   ],
   providers: [
     UserService,
