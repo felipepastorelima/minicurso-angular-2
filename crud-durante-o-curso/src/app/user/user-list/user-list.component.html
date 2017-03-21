@@ -1,5 +1,12 @@
 <ul>
   <li *ngFor="let user of users">
     {{ user.id }} - {{ user.name }}
+    <a
+      href="javascript:"
+      (click)="edit(user.id)"
+    >
+      Editar
+    </a>
+
   </li>
 </ul>

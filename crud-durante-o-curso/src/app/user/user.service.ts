@@ -21,6 +21,15 @@ export class UserService {
       });
   }
 
+  find(id: string): Promise<Array<User>> {
+      return this.http
+        .get(`${environment.apiUrl}/users/${id}`)
+        .toPromise()
+        .then(response => {
+          return User.fromJSON(response.json());
+        });
+    }
+
   create(user: User): Promise<Array<User>> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
