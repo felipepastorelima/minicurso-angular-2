@@ -18,6 +18,9 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.list();
+    this.userService.monitorChanged.asObservable().forEach(() => {
+      alert("monitorChanged");
+    });
   }
 
   list() {
@@ -30,6 +33,10 @@ export class UserListComponent implements OnInit {
 
   edit(id: string) {
     this.router.navigate(['user', id, 'edit']);
+  }
+
+  onUserChanged(user: User) {
+    alert(user.name);
   }
 
 }

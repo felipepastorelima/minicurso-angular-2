@@ -1,15 +1,20 @@
-import { Directive, ElementRef, HostBinding, HostListener, Input } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Input } from '@angular/core';
 
 @Directive(
   { selector: '[appHighlight]' }
 )
-export class HighlightDirective {
+export class HighlightDirective implements AfterViewInit{
 
-    @HostBinding('style.backgroundColor') role = 'yellow';
-    @HostListener('click') onMouseEnter() {
-      alert('clicou');
+  @Input() color;
+
+    @HostListener('mouseenter') onMouseEnter() {
+      // do work
     }
 
-    constructor(el: ElementRef) { }
+    constructor(private el: ElementRef) {}
+
+    ngAfterViewInit() {
+      this.el.nativeElement.style.backgroundColor = this.color;
+    }
 
 }

@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserRoutingModule } from './user-routing.module';
@@ -21,6 +22,7 @@ import { HighlightDirective } from "app/user/highlight.directive";
     UserListComponent,
     UserFormComponent,
     HighlightDirective,
+    UserDetailsComponent,
   ],
   providers: [
     UserService,

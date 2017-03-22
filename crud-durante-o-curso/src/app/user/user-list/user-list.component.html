@@ -1,3 +1,5 @@
+{{ userService.message }}
+
 <ul>
   <li *ngFor="let user of users">
     {{ user.id }} - {{ user.name }}
@@ -7,6 +9,9 @@
     >
       Editar
     </a>
+
+    <br>
+    <app-user-details (userChanged)="onUserChanged($event)" [user]="user"></app-user-details>
 
   </li>
 </ul>

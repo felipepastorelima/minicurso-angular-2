@@ -1,22 +1,37 @@
+import { Subject } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { User } from './user';
 import { Http, Headers } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
 export class UserService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
+  public monitorChanged = new EventEmitter();
+
+  public message = 1;
 
   constructor(
     private http: Http,
-  ) { }
+  ) {
+    this.startMonitor();
+  }
+
+  startMonitor() {
+    setInterval(() => {
+      this.message += 1;
+    }, 1000);
+  }
 
   list(): Promise<Array<User>> {
-    return this.http
+    let promise = this.http
       .get(`${environment.apiUrl}/users`)
-      .toPromise()
-      .then(response => {
+      .toPromise();
+
+    debugger;
+
+    return promise.then(response => {
         return User.fromJSONList(response.json());
       });
   }
