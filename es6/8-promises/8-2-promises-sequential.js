@@ -1,5 +1,5 @@
 function one() {
-  return new Promise((resolve, reject) => {
+  return new Promise(function(resolve, reject){
     setTimeout(() => {
       console.log('one');
       resolve();
@@ -31,4 +31,4 @@ one().then(() => {
   return two().then(() => {
     return three();
   });
-});
+}).catch(err => console.log(err));

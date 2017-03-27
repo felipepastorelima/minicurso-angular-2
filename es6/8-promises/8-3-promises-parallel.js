@@ -34,5 +34,7 @@ let allPromises = Promise.all([
 ]);
 allPromises.then(() => {
   console.log("Finalizou todas");
+}).catch((err) => {
+  console.log(err);
 });
 
