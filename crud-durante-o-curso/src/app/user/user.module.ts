@@ -1,3 +1,4 @@
+import { SharedModule } from '../shared/shared.module';
 import { UserService } from './user.service';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
@@ -6,8 +7,7 @@ import { NgModule } from '@angular/core';
 
 @NgModule({
   imports: [
-    CommonModule,
-    HttpModule,
+    SharedModule,
   ],
   exports: [
     UserListComponent,

@@ -23,4 +23,8 @@ export class User {
 
   }
 
+  get idAndName() {
+    return `${this.id} - ${this.name}`;
+  }
+
 }
