@@ -1,4 +1,4 @@
-import { HighlightDirective } from './hightlight.directive';
+import { UserModule } from './user/user.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,12 +9,12 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HighlightDirective,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
