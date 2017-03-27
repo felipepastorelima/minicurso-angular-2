@@ -1,14 +1,20 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Input } from '@angular/core';
 
-@Directive({ selector: '[appHighlight]' })
-export class HighlightDirective {
+@Directive({ selector: 'label[appHighlight]' })
+export class HighlightDirective implements AfterViewInit{
+
+  @Input('appColor') color: String;
 
   @HostListener('click') onClick() {
     alert('clicou');
   }
 
-  constructor(el: ElementRef) {
-    el.nativeElement.style.backgroundColor = 'yellow';
+  ngAfterViewInit(): void {
+    this.el.nativeElement.style.backgroundColor = this.color;
+  }
+
+  constructor(private el: ElementRef) {
+
   }
 
 }
