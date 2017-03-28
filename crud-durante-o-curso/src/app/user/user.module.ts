@@ -1,3 +1,4 @@
+import { UserFormComponent } from './user-form/user-form.component';
 import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserService } from './user.service';
@@ -14,6 +15,7 @@ import { NgModule } from '@angular/core';
   exports: [],
   declarations: [
     UserListComponent,
+    UserFormComponent,
   ],
   providers: [
     UserService,
