@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -16,6 +17,7 @@ import { NgModule } from '@angular/core';
   declarations: [
     UserListComponent,
     UserFormComponent,
+    UserDetailsComponent,
   ],
   providers: [
     UserService,

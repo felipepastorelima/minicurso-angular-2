@@ -23,4 +23,8 @@ export class UserListComponent implements OnInit {
       this.appState.setLoading(false);
     });
   }
+
+  onUserChange(user) {
+    alert(`Usuário '${user.name}' modificado!`);
+  }
 }

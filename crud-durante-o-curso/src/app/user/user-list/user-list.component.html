@@ -7,7 +7,7 @@
 
 <ul *ngIf="!loading">
   <li *ngFor="let user of users">
-    {{ user.id }} - {{ user.name }}
+    <app-user-details [user]="user" (userChanged)="onUserChange($event)"></app-user-details>
     <button
       type="button"
       [routerLink]="[user.id, 'edit']"
