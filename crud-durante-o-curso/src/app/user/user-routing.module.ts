@@ -1,9 +1,9 @@
-import { UserResolve } from './user-form/user-resolve.service';
 import { UserFormComponent } from './user-form/user-form.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { UserResolve } from './user-form/user-resolve.service';
 import { UserListComponent } from './user-list/user-list.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ConfirmGuard } from 'app/user/confirm.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +12,7 @@ const routes: Routes = [
       {
         path: 'new',
         component: UserFormComponent,
+        canActivate: [ConfirmGuard],
         resolve: {
           user: UserResolve,
         }
@@ -36,6 +37,7 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     UserResolve,
+    ConfirmGuard,
   ]
 })
 export class UserRoutingModule { }

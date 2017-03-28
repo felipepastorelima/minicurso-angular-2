@@ -25,6 +25,6 @@ export class UserListComponent implements OnInit {
   }
 
   onUserChange(user) {
-    alert(`Usuário '${user.name}' modificado!`);
+    console.log(`Usuário '${user.name}' modificado!`);
   }
 }
