@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { User } from '../user';
+import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -6,16 +9,20 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'user-form.component.html'
 })
 export class UserFormComponent implements OnInit {
+  user: User;
   form: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
+    this.user = new User();
     this.form = this.formBuilder.group({
       'name': [
-        '',
+        this.user.name,
         [
           Validators.required,
           Validators.minLength(2)
@@ -29,7 +36,15 @@ export class UserFormComponent implements OnInit {
       return;
     }
 
-    alert('Salvou!');
+    this.user.name = this.form.value.name;
+
+    this.userService
+      .create(this.user)
+      .then(() => {
+        this.router.navigate(['/user']);
+      }).catch(err => {
+        console.error(err);
+      });
   }
 
 }

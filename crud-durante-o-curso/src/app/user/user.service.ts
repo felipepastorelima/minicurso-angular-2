@@ -18,4 +18,17 @@ export class UserService {
         return User.fromJSONList(response.json());
       });
   }
+
+  create(user: User) {
+    return this.http
+      .post(
+        `${environment.apiUrl}/users`,
+        user,
+      )
+      .toPromise()
+      .then(response => {
+        return User.fromJSON(response.json());
+      });
+  }
+
 }
