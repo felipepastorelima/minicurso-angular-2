@@ -8,14 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
   users: Array<User>;
+  loading: boolean = true;
 
   constructor(
     private userService: UserService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
+    this.loading = true;
     this.userService.list().then(users => {
       this.users = users;
+      this.loading = false;
     });
   }
 }
