@@ -1,3 +1,4 @@
+import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserService } from './user.service';
 import { HttpModule } from '@angular/http';
@@ -8,6 +9,7 @@ import { NgModule } from '@angular/core';
 @NgModule({
   imports: [
     SharedModule,
+    UserRoutingModule,
   ],
   exports: [],
   declarations: [
