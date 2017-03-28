@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class UserFormComponent implements OnInit {
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit() { }
+  constructor(
+    private formBuilder: FormBuilder,
+  ) { }
+
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      'name': [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2)
+        ]
+      ]
+    });
+  }
+
+  save() {
+    if( !this.form.valid) {
+      return;
+    }
+
+    alert('Salvou!');
+  }
+
 }

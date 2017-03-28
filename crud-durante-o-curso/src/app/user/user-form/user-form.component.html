@@ -1,1 +1,21 @@
-User form
+<form
+  [formGroup]="form"
+  (ngSubmit)="save()"
+  *ngIf="form"
+>
+  Nome <br>
+  <input
+    type="text"
+    formControlName="name"
+  />
+  <span
+    *ngIf="this.form.get('name').errors && this.form.get('name').errors.required"
+    style="color: red"
+  >
+    Este campo é obrigatório
+  </span>
+
+  <button type="submit">Salvar</button>
+</form>
+
+{{ form.value.name }}
