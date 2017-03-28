@@ -8,5 +8,9 @@
 <ul *ngIf="!loading">
   <li *ngFor="let user of users">
     {{ user.id }} - {{ user.name }}
+    <button
+      type="button"
+      [routerLink]="[user.id, 'edit']"
+    >Editar</button>
   </li>
 </ul>

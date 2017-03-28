@@ -19,7 +19,7 @@ export class UserService {
           .then(response => {
             resolve(User.fromJSONList(response.json()));
           }).catch(err => reject(err));
-      }, 2000);
+      }, 500);
     });
   }
 
@@ -32,12 +32,32 @@ export class UserService {
       });
   }
 
-  create(user: User) {
+  save(user: User) {
+    if (user.id) {
+      return this.update(user);
+    } else {
+      return this.create(user);
+    }
+  }
+
+  private update(user: User) {
+    return this.http
+      .put(
+        `${environment.apiUrl}/users/${user.id}`,
+        user,
+      )
+      .toPromise()
+      .then(response => {
+        return User.fromJSON(response.json());
+      });
+  }
+
+  private create(user: User) {
     return this.http
       .post(
-      `${environment.apiUrl}/users`,
-      user,
-    )
+        `${environment.apiUrl}/users`,
+        user,
+      )
       .toPromise()
       .then(response => {
         return User.fromJSON(response.json());
