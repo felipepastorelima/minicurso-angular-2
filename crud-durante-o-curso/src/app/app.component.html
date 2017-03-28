@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div [hidden]="appState.loading">
+  <router-outlet></router-outlet>
+</div>
+<span [hidden]="!appState.loading">
+  Carregando...
+</span>

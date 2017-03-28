@@ -1,3 +1,4 @@
+import { AppStateService } from '../../app-state.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,18 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
   users: Array<User>;
-  loading: boolean = true;
 
   constructor(
     private userService: UserService,
+    private appState: AppStateService,
   ) {
   }
 
   ngOnInit() {
-    this.loading = true;
+    this.appState.setLoading(true);
     this.userService.list().then(users => {
       this.users = users;
-      this.loading = false;
+      this.appState.setLoading(false);
     });
   }
 }

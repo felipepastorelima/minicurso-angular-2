@@ -10,13 +10,17 @@ export class UserService {
     private http: Http,
   ) { }
 
-  list() {
-    return this.http
-      .get(`${environment.apiUrl}/users`)
-      .toPromise()
-      .then(response => {
-        return User.fromJSONList(response.json());
-      });
+  list(): Promise<Array<User>> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.http
+          .get(`${environment.apiUrl}/users`)
+          .toPromise()
+          .then(response => {
+            resolve(User.fromJSONList(response.json()));
+          }).catch(err => reject(err));
+      }, 2000);
+    });
   }
 
   find(id: number) {
@@ -31,9 +35,9 @@ export class UserService {
   create(user: User) {
     return this.http
       .post(
-        `${environment.apiUrl}/users`,
-        user,
-      )
+      `${environment.apiUrl}/users`,
+      user,
+    )
       .toPromise()
       .then(response => {
         return User.fromJSON(response.json());

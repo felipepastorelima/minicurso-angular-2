@@ -1,3 +1,4 @@
+import { AppStateService } from './app-state.service';
 import { AppRoutingModule } from './app-routing.module';
 import { UserModule } from './user/user.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,7 +17,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     UserModule,
   ],
-  providers: [],
+  providers: [
+    AppStateService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

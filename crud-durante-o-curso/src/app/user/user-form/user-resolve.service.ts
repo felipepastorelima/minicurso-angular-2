@@ -16,7 +16,7 @@ export class UserResolve implements Resolve<User>{
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): User | Observable<User> | Promise<User> {
-    let id = route.params['id'];
+    const id = route.params['id'];
 
     if (!id) {
       return Promise.resolve(
