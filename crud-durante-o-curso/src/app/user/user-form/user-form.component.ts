@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserFormComponent implements OnInit {
   user: User;
   form: FormGroup;
+  loading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,12 +38,14 @@ export class UserFormComponent implements OnInit {
     }
 
     this.user.name = this.form.value.name;
-
+    this.loading = true;
     this.userService
       .create(this.user)
       .then(() => {
+        this.loading = false;
         this.router.navigate(['/user']);
       }).catch(err => {
+        this.loading = false;
         console.error(err);
       });
   }

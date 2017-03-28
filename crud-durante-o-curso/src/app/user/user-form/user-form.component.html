@@ -15,7 +15,12 @@
     Este campo é obrigatório
   </span>
 
-  <button type="submit">Salvar</button>
+  <br>
+
+  <button
+    type="submit"
+    [disabled]="loading"
+  >Salvar</button>
 </form>
 
 {{ form.value.name }}
