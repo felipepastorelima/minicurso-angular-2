@@ -1,7 +1,12 @@
+<button
+  type="button"
+  [routerLink]="['new']"
+>
+  Novo
+</button>
+
 <ul *ngIf="!loading">
   <li *ngFor="let user of users">
     {{ user.name }}
   </li>
 </ul>
-
-<span *ngIf="loading">Carregando...</span>

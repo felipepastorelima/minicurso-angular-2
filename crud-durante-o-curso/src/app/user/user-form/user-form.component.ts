@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-user-form',
   templateUrl: 'user-form.component.html'
 })
-
 export class UserFormComponent implements OnInit {
   form: FormGroup;
 
@@ -26,7 +25,7 @@ export class UserFormComponent implements OnInit {
   }
 
   save() {
-    if( !this.form.valid) {
+    if (!this.form.valid) {
       return;
     }
 
