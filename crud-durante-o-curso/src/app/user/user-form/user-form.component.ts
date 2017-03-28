@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,10 +17,25 @@ export class UserFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.user = new User();
+    this.route.params.forEach(params => {
+      if (params['id']) {
+        const id = Number(params['id']);
+        this.userService.find(id).then((user) => {
+          this.user = user;
+          this.buildForm();
+        });
+      } else {
+        this.user = new User();
+        this.buildForm();
+      }
+    });
+  }
+
+  buildForm() {
     this.form = this.formBuilder.group({
       'name': [
         this.user.name,

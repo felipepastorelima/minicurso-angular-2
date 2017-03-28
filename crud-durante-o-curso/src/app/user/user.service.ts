@@ -19,6 +19,15 @@ export class UserService {
       });
   }
 
+  find(id: number) {
+    return this.http
+      .get(`${environment.apiUrl}/users/${id}`)
+      .toPromise()
+      .then(response => {
+        return User.fromJSON(response.json());
+      });
+  }
+
   create(user: User) {
     return this.http
       .post(

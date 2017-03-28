@@ -1,3 +1,4 @@
+import { UserResolve } from './user-form/user-resolve.service';
 import { UserFormComponent } from './user-form/user-form.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,6 +11,10 @@ const routes: Routes = [
     children: [
       {
         path: 'new',
+        component: UserFormComponent,
+      },
+      {
+        path: ':id/edit',
         component: UserFormComponent,
       },
       {
