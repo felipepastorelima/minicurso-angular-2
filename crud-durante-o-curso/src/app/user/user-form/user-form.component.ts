@@ -21,17 +21,9 @@ export class UserFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.forEach(params => {
-      if (params['id']) {
-        const id = Number(params['id']);
-        this.userService.find(id).then((user) => {
-          this.user = user;
-          this.buildForm();
-        });
-      } else {
-        this.user = new User();
-        this.buildForm();
-      }
+    this.route.data.forEach((data: {user: User}) => {
+      this.user = data.user;
+      this.buildForm();
     });
   }
 

@@ -12,10 +12,16 @@ const routes: Routes = [
       {
         path: 'new',
         component: UserFormComponent,
+        resolve: {
+          user: UserResolve,
+        }
       },
       {
         path: ':id/edit',
         component: UserFormComponent,
+        resolve: {
+          user: UserResolve,
+        }
       },
       {
         path: '',
@@ -28,5 +34,8 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
+  providers: [
+    UserResolve,
+  ]
 })
 export class UserRoutingModule { }
