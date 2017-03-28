@@ -9,9 +9,7 @@ import { NgModule } from '@angular/core';
   imports: [
     SharedModule,
   ],
-  exports: [
-    UserListComponent,
-  ],
+  exports: [],
   declarations: [
     UserListComponent,
   ],
